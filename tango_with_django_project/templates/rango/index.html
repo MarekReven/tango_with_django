@@ -2,47 +2,61 @@
 
 {% load staticfiles %}
 
-{% block title %}
-
-        {% if user.is_authenticated %}
-            <h1>Rango says... hello {{ user.username }}!</h1>
-        {% else %}
-            <h1>Rango says... hello world!</h1>
-        {% endif %}
-
-
-{% endblock %}
+{% block title %}Index{% endblock %}
 
 {% block body_block %}
 
+    <div class="page-header">
         {% if user.is_authenticated %}
             <h1>Rango says... hello {{ user.username }}!</h1>
         {% else %}
             <h1>Rango says... hello world!</h1>
         {% endif %}
 
-        {% if categories %}
-            <ul>
-                {% for category in categories %}
-                <!--iterujemy po kategoriach, teraz mam obiekt category, ktory ma atrybut slug
-                i on jest podstawiony ponizej w {{ categry.slug }} -->
-                <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
-                {% endfor %}
-            </ul>
+    </div>
 
-        {% else %}
-            <strong>There are no categories to show.</strong>
-        {% endif %}
-        <br>
-        {% if pages %}
-            <ul>
-                {% for page in pages %}
-                    <li>{{ page.title }}</li>
-                {% endfor %}
-            </ul>
+    <div class="row placeholders">
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Top 5 Categories</h3>
+                    </div>
+                </div>
 
-        {% else %}
-            <strong>There are no pages to show.</strong>
-        {% endif %}
+
+                {% if categories %}
+                    <ul>
+                        {% for category in categories %}
+                        <!--iterujemy po kategoriach, teraz mam obiekt category, ktory ma atrybut slug
+                        i on jest podstawiony ponizej w {{ categry.slug }} -->
+                        <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <strong>There are no categories to show.</strong>
+                {% endif %}
+            </div>
+
+            <div class="col-xs-12 col-sm-6 placeholder">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Top 5 pages</h3>
+                    </div>
+                </div>
+                {% if pages %}
+
+                    <ul>
+                        {% for page in pages %}
+                            <li>{{ page.title }}</li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <strong>There are no pages to show.</strong>
+                {% endif %}
+            </div>
+    </div>
+
 
 {% endblock %}
