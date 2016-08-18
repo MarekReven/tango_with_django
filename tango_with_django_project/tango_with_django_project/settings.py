@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+#BASE_DIR to tango_with_django/tango_with_django_project/
+#podwojne podwyzszenie katalogu przez os.path.dirname
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
@@ -92,6 +94,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+#BASE_DIR to tango_with_django/tango_with_django_project/
+
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
@@ -110,3 +114,10 @@ ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
 LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
+
+#Sending email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'maro.lapinski@gmail.com'
+EMAIL_HOST_PASSWORD = 'alicante3424'
+EMAIL_PORT = 587

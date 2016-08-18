@@ -1,24 +1,21 @@
-def decorator(func_to_decorate):
-    def some():
-        return 'decoration' + func_to_decorate() + 'decoration'
-    return some
-
-@decorator
-def f():
-    return 'marek'
+import os
 
 
-print(f())
-# # f = decorator(f)
-# print(f())
+directory_of_file = os.path.dirname(__file__)
 
+print('directory_of_file (where this test.py file is) - {0}'.format(directory_of_file))
 
-{% extends 'rango/base.html' %}
+directory_higher = os.path.dirname(directory_of_file)
+print('directory_higher - {}'.format(directory_higher))
 
-{% load staticfiles %}
+join = os.path.join(directory_of_file, 'test')
+print('joined dir - {0}'.format(join))
 
-{% block title %}{% endblock %}
+join = os.path.join(directory_of_file, '/test')
+print('joined dir - {0}'.format(join))
 
-{% block body_block %}
+join = os.path.join(directory_of_file, './test')
+print('joined dir - {0}'.format(join))
 
-{% endblock %}
+join = os.path.join(directory_of_file, '../test')
+print('joined dir - {0}'.format(join))
